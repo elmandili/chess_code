@@ -1,26 +1,109 @@
 <html>
-    <head>
-        {{> head}}
-    </head>
-    <body>
-        <h2>Chess_Code</h2>
-        <input type="text" id="codeInput">
-        <button id="createGame">Create game</button>
-        <button id="joinGame">Join game</button>
-        <div style="color: red" id="errorMessage"></div>
 
-        <script>
-            $('#createGame').on('click', function() {
-                window.location.replace('/white?code=' + $('#codeInput').val());
-            });
-            $('#joinGame').on('click', function() {
-                window.location.replace('/black?code=' + $('#codeInput').val());
-            });
+<head>
+    {{> head}}
+</head>
 
-            var urlParams = new URLSearchParams(window.location.search);
-            if (urlParams.get('error') == 'invalidCode') {
-                $('#errorMessage').text('Invalid invite code');
-            }
-        </script>
-    </body>
+<body>
+    <style>
+        /* Input Container */
+        .input {
+            text-align: center;
+            /* Center text inside the container */
+            
+            /* White background */
+            padding: 30px;
+            
+            /* Subtle shadow */
+            width: auto;
+            /* Let the container take up only as much space as needed */
+        }
+
+        /* Input Field */
+        #codeInput {
+            width: 300px;
+            /* Fixed width for the input field */
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        /* Buttons Container */
+        .buttons {
+            display: flex;
+            gap: 10px;
+            /* Space between buttons */
+            justify-content: center;
+            /* Center buttons horizontally */
+            margin-top: 10px;
+            /* Space between input and buttons */
+        }
+
+        /* Buttons */
+        button {
+            width: auto;
+            /* Let the buttons take up only as much space as needed */
+            padding: 10px 20px;
+            /* Adjust padding for better proportions */
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        #createGame {
+            background-color: #4CAF50;
+            /* Green */
+            color: white;
+        }
+
+        #joinGame {
+            background-color: #007bff;
+            /* Blue */
+            color: white;
+        }
+
+        button:hover {
+            opacity: 0.9;
+            /* Slight fade on hover */
+        }
+
+        /* Error Message */
+        #errorMessage {
+            margin-top: 10px;
+            font-size: 14px;
+        }
+    </style>
+    <div class="main">
+        <div class="input">
+            <h2 style="color: white;">Chess_Code</h2>
+            <input type="text" id="codeInput">
+            <div class="buttons">
+                <button id="createGame">Create game</button>
+                <button id="joinGame">Join game</button>
+            </div>
+            <div style="color: red" id="errorMessage"></div>
+        </div>
+    </div>
+
+
+    <script>
+        $('#createGame').on('click', function () {
+            window.location.replace('/white?code=' + $('#codeInput').val());
+        });
+        $('#joinGame').on('click', function () {
+            window.location.replace('/black?code=' + $('#codeInput').val());
+        });
+
+        var urlParams = new URLSearchParams(window.location.search);
+        if (urlParams.get('error') == 'invalidCode') {
+            $('#errorMessage').text('Invalid invite code');
+        }
+    </script>
+
+</body>
+
 </html>

@@ -124,3 +124,5 @@ socket.on('gameOverDisconnect', function() {
     gameOver = true;
     updateStatus()
 });
+
+

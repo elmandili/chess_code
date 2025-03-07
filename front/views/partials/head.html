@@ -5,7 +5,26 @@
 <script src="/public/js/chessboard-1.0.0.min.js"></script>
 <script src="/public/js/chess-0.10.3.min.js"></script>
 
+
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 
 <script src="/socket.io/socket.io.js"></script>
 <script>let socket = io();</script>
+
+<div class="sidenav" id="sidenav">
+    <a id="home" class="active"><span>🏠</span> <span class="text">Home</span> </a>
+    <a href="#"><span>♟️</span> <span class="text">Play</span> </a>
+    <a href="#"><span>📜</span> <span class="text">Rules</span> </a>
+    <a href="#"><span>🏆</span> <span class="text">Leaderboard</span> </a>
+    <a href="#"><span>📞</span> <span class="text">Contact</span> </a>
+</div>
+
+<div class="toggle-btn" id="toggleBtn">☰</div>
+
+<script src="/public/js/side-nav.js"></script>
+
+<script>
+    $('#home').on('click', function () {
+        window.location.replace('/home');
+    });
+</script>
